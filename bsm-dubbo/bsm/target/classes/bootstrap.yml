@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: bsm-provider
+  #  profiles:
+  #    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 172.29.96.1:8848
+        prefix: ${spring.application.name}
+        group: DEFAULT_GROUP
+        namespace:
+        file-extension: yaml
+      discovery:
+        server-addr: 172.29.96.1:8848

@@ -1,0 +1,9 @@
+com\haiya\entity\pojo\Alert.class
+com\haiya\entity\dto\BatteryInfoDTO.class
+com\haiya\service\WarnService.class
+com\haiya\entity\pojo\Vehicle.class
+com\haiya\service\WarnWithVehicleINFService.class
+com\haiya\entity\pojo\VehicleBatteryMessage.class
+com\haiya\entity\pojo\Vehicle$VehicleBuilder.class
+com\haiya\entity\vo\Result.class
+com\haiya\entity\vo\WarmLevelVO.class

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haiya.mapper.WarnMapper">
+    <select id="getRulesMap" resultType="map">
+        SELECT rule_name,rule_description FROM bms_rules
+        <where>
+            <if test="ruleId != null">
+                AND rule_id = #{ruleId}
+            </if>
+            <if test="batteryType != null and batteryType.trim() != ''">
+                AND battery_type = #{batteryType}
+            </if>
+        </where>
+    </select>
+
+    <select id="getRulesByCarIdAndRuleId" resultType="string">
+        SELECT br.rule_description
+        FROM bms_rules br
+        WHERE EXISTS (
+        SELECT 1
+        FROM vehicle_info vi
+        WHERE vi.vin = #{carId}
+        AND br.battery_type = vi.battery_type
+        )
+        <if test="ruleId != null">
+            AND br.rule_id = #{ruleId}
+        </if>
+    </select>
+
+    <select id="getRulesByCarIdAndRuleId2" resultType="string">
+        SELECT br.rule_description
+        FROM bms_rules br
+        WHERE EXISTS (
+        SELECT 1
+        FROM vehicle_info vi
+        WHERE vi.vin = #{carId}
+        AND br.battery_type = vi.battery_type
+        )
+        <if test="ruleId != null">
+            AND br.rule_id = #{ruleId}
+        </if>
+    </select>
+
+
+</mapper>
